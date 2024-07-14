@@ -24,14 +24,34 @@ describe("Handle dropdowns", () => {
     })
 
     //Include jquerry function Dynamic dropdown
-    it("Auto Suggestion dynamic dropdown", () => {
+    it.skip("Auto Suggestion dynamic dropdown", () => {
         cy.visit("https://www.google.com/")
         cy.get("textarea[title='Search']").type("Delhi")
         cy.wait(4)
-        cy.get(".wM6W7d span").each(($element,index,$array)=>{
-            if($element.text()==='delhi weather'){
+        cy.get(".wM6W7d span").each(($element, index, $array) => {
+            if ($element.text() === 'delhi weather') {
                 cy.wrap($element).click()
             }
         })
     })
+
+    // it.only("Auto Suggestion dynamic dropdown", () => {
+    //     cy.visit("https://www.google.c om/")
+    //     cy.get("textarea[title='Search']").type("Delhi")
+    //     cy.wait(4)
+    //     cy.get(".wM6W7d span").each(($element, index, $array) => {
+    //         if ($element.text() === 'delhi weather') {
+    //             cy.wrap($element).click()
+    //         }
+    //     })
+    // }
+
+   // )
+
+   it('Auto Suggestion',()=>{
+    cy.visit("https://www.google.com/");
+
+
+ 
+   });
 })

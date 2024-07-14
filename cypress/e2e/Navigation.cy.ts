@@ -32,5 +32,4 @@ describe('My test suite name', function () {
         cy.wait(+1);
         cy.title().should('eq', "nopCommerce demo store. Register");
     })
-
 })

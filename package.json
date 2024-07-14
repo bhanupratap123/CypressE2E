@@ -9,7 +9,7 @@
     "cy-test": "npx cypress open"
   },
   "keywords": [],
-  "author": "",
+  "author": "BhanuFF",
   "license": "ISC",
   "dependencies": {
     "cypress": "^12.11.0",

@@ -1,14 +1,11 @@
 describe('Alerts',()=>{
 
     //1) Javascript Alerts : It will have some text and OK Button
-    it.skip('Javascript Alert',()=>{
-        cy.visit("https://the-internet.herokuapp.com/javascript_alerts")
-        cy.get("button[onclick='jsAlert()']").click()
-
+    it('Javascript Alert',()=>{
+        cy.visit("https://the-internet.herokuapp.com/javascript_alerts");
         cy.on('window:alert',(t)=>{
             expect(t).to.contain('I am a JS Alert')
         })
-
         cy.get("#result").should('have.text','You successfully clicked an alert')
     })
 
@@ -24,13 +21,13 @@ describe('Alerts',()=>{
         })
 
         cy.get("#result").should('have.text','You clicked: Ok')
-
     })
 
     //Closed Alert by clicking on cancel button
     it.skip('JS Confirm Alert',()=>{
         cy.visit("https://the-internet.herokuapp.com/javascript_alerts")
         cy.get("button[onclick='jsConfirm()']").click()
+        
         cy.on('window:confirm',(t)=>false)
         cy.get("#result").should('have.text','You clicked: Cancel')
     })
@@ -43,7 +40,6 @@ describe('Alerts',()=>{
         })
 
         cy.get("button[onclick='jsPrompt()']").click()
-
         cy.get("#result").should('have.text','You entered: Welcome')
     })
 })
