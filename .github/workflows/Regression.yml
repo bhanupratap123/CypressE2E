@@ -1,8 +1,8 @@
 name: End-to-end tests
 on: 
   workflow_dispatch:
-  schedule:
-    cron: ''
+  # schedule:
+  # cron: ''
 jobs:
   cypress-run:
     runs-on: 
