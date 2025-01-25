@@ -5,10 +5,12 @@ on:
     cron: ''
 jobs:
   cypress-run:
-    runs-on: ubuntu-24.04
-      container:
-        image: cypress/browser:22.12.0
-        options:
+    runs-on: 
+      group: windows-latest
+      
+      # container:
+      #   image: cypress/browser:22.12.0
+      #   options:
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
