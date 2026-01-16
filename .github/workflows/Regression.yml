@@ -4,12 +4,9 @@ on:
   # schedule:
   # cron: ''
 jobs:
-  cypress-run:
-    runs-on: 
-      group: windows-latest
-      # container:
-      #   image: cypress/browser:22.12.0
-      #   options:
+  Regression_Tests:
+    name: Run Regression Tests
+    runs-on: self-hosted
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
@@ -18,8 +15,12 @@ jobs:
       - name: Install Node
         uses: actions/setup-node@v4
         with:
-              node-version: 20
+              node-version: 22
+
       - name: Install Dependencies
-        run : npm install
-      - name: Run Cypress Test
-        uses: cypress-io/github-action@v6
+        run : npm install --force
+      
+      - name: Run Regression Tests
+        run: npm run cy:regression
+      
+        

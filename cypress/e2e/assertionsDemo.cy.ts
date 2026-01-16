@@ -8,21 +8,17 @@ describe('Assertion Demo', () => {
       should('be.visible')
       .should('be.enabled').
       should('have.css', "background-color");
-    // This is the exampe of explicit wait
-    // expect(true).to.be.false;
     assert.strictEqual(7 > 3, true);
   }
-  )
-  it('Implicit Assertion', () => { 
+)
+  it('Implicit Assertion', () => {
     cy.visit("https://opensource-demo.orangehrmlive.com/web/index.php/auth/login");
     cy.wait(1);
     cy.url().should("include", "orangehrmlive.com")
       .and("contain", "orangehrmlive.com")
       .and("eq", "https://opensource-demo.orangehrmlive.com/web/index.php/auth/login");
-
-
-      cy.title().should("include","Orange")
-      .and("eq","OrangeHRM")
+    cy.title().should("include", "Orange")
+      .and("eq", "OrangeHRM")
   }
   )
 }
