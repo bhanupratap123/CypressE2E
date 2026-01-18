@@ -1,26 +1,42 @@
 name: End-to-end tests
-on: 
+
+on:
   workflow_dispatch:
-  # schedule:
-  # cron: ''
+    inputs:
+      test_type:
+        description: "Select which tests to run"
+        required: true
+        default: "regression"
+        type: choice
+        options:
+          - smoke
+          - regression
+          - sanity
+      tags:
+        description: "Optional Cypress tag (example: @payment)"
+        required: false
+
 jobs:
   Regression_Tests:
-    name: Run Regression Tests
+    name: Run Cypress Tests
     runs-on: self-hosted
+
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
-      # Install npm dependencies, cache them correctly
-      # and run all Cypress tests
+
       - name: Install Node
         uses: actions/setup-node@v4
         with:
-              node-version: 22
+          node-version: 22
 
       - name: Install Dependencies
-        run : npm install --force
-      
-      - name: Run Regression Tests
-        run: npm run cy:regression
-      
-        
+        run: npm install --force
+
+      - name: Run Cypress Tests
+        run: |
+          if [ "${{ inputs.tags }}" != "" ]; then
+            npx cypress run --env grep=${{ inputs.tags }}
+          else
+            npm run cy:${{ inputs.test_type }}
+          fi
